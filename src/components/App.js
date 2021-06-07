@@ -219,58 +219,118 @@ const states = [
   }
 ];
 
+// function App() {
+//   // Do not alter/remove main div
+//   const [stateVal, setState] = useState(0);
+//   const [cityVal, setCity] = useState(0);
+//   const [land, setLand] = useState(0);
+
+//   const handleState = (e) => {
+//     setState(e.target.value);
+//   };
+//   const handleCity = (e) => {
+//     setCity(e.target.value);
+//   };
+//   const handleLandmark = (e) => {
+//     setLand(e.target.value);
+//   };
+
+//   return (
+//     <div id="main">
+//       <select id="state" name="state" value={stateVal} onChange={handleState}>
+//         {states.map((item, index) => {
+//           return <option value={index}>{item.name}</option>;
+//         })}
+//       </select>
+//       <select id="city" name="city" value={cityVal} onChange={handleCity}>
+//         {states[stateVal].city.map((item, index) => {
+//           return <option value={index}>{item.name}</option>;
+//         })}
+//       </select>
+//       <select
+//         id="landmark"
+//         name="landmark"
+//         value={land}
+//         onChange={handleLandmark}
+//       >
+//         {states[stateVal].city[cityVal].landmarks.map((item, index) => {
+//           return <option value={index}>{item.name}</option>;
+//         })}
+//       </select>
+
+//       <div id="state-name">{states[stateVal].name}</div>
+//       <div id="state-description">{states[stateVal].description}</div><br/>
+
+//       <div id="city-name">{states[stateVal].city[cityVal].name}</div>
+//       <div id="city-description">
+//         {states[stateVal].city[cityVal].description}
+//       </div><br>
+
+//       <div id="landmark-name">
+//         {states[stateVal].city[cityVal].landmarks[land].name}
+//       </div>
+//       <div id="landmark-description">
+//         {states[stateVal].city[cityVal].landmarks[land].description}
+//       </div>
+//     </div>
+//   );
+// }
+
 function App() {
-  // Do not alter/remove main div
   const [stateVal, setState] = useState(0);
+
   const [cityVal, setCity] = useState(0);
-  const [land, setLand] = useState(0);
+
+  const [landVal, setLand] = useState(0);
 
   const handleState = (e) => {
     setState(e.target.value);
   };
+
   const handleCity = (e) => {
     setCity(e.target.value);
   };
-  const handleLandmark = (e) => {
+
+  const handleLand = (e) => {
     setLand(e.target.value);
   };
 
   return (
     <div id="main">
-      <select id="state" name="state" value={stateVal} onChange={handleState}>
+      <select id="state" value={stateVal} onChange={handleState}>
         {states.map((item, index) => {
           return <option value={index}>{item.name}</option>;
         })}
       </select>
-      <select id="city" name="city" value={cityVal} onChange={handleCity}>
+
+      <select id="city" value={cityVal} onChange={handleCity}>
         {states[stateVal].city.map((item, index) => {
           return <option value={index}>{item.name}</option>;
         })}
       </select>
-      <select
-        id="landmark"
-        name="landmark"
-        value={land}
-        onChange={handleLandmark}
-      >
+
+      <select id="landmark" value={landVal} onChange={handleLand}>
         {states[stateVal].city[cityVal].landmarks.map((item, index) => {
           return <option value={index}>{item.name}</option>;
         })}
       </select>
 
-      <div id="state-name">{states[stateVal].name}</div>
+      <div id="state-title">{states[stateVal].name}</div>
+
       <div id="state-description">{states[stateVal].description}</div>
 
-      <div id="city-name">{states[stateVal].city[cityVal].name}</div>
+      <div id="city-title">{states[stateVal].city[cityVal].name}</div>
+
       <div id="city-description">
         {states[stateVal].city[cityVal].description}
       </div>
 
-      <div id="landmark-name">
-        {states[stateVal].city[cityVal].landmarks[land].name}
+      <div id="landmark-title">
+        {states[stateVal].city[cityVal].landmarks[landVal].name}
       </div>
+
       <div id="landmark-description">
-        {states[stateVal].city[cityVal].landmarks[land].description}
+        {states[stateVal].city[cityVal].landmarks[landVal].description}
       </div>
     </div>
   );
